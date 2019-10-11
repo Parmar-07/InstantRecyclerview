@@ -14,8 +14,6 @@ public class CustomItemViewBind implements InstantViewBinder<CustomModel> {
 
     private TextView customTitle;
     private TextView customSubTitle;
-    private ImageView imageView1;
-    private ImageView imageView2;
 
     @SuppressLint("StaticFieldLeak")
     private static CustomItemViewBind binder = null;
@@ -36,8 +34,8 @@ public class CustomItemViewBind implements InstantViewBinder<CustomModel> {
     public void instantBindView(View iteView) {
         customTitle = iteView.findViewById(R.id.customTitle);
         customSubTitle = iteView.findViewById(R.id.customSubTitle);
-        imageView1 = iteView.findViewById(R.id.imageView1);
-        imageView2 = iteView.findViewById(R.id.imageView2);
+        ImageView imageView1 = iteView.findViewById(R.id.imageView1);
+        ImageView imageView2 = iteView.findViewById(R.id.imageView2);
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
