@@ -21,10 +21,9 @@ public class CustomRecyclerView extends Fragment {
 
     private static CustomRecyclerView recyclerFrag = null;
     private InstantBuilder<CustomModel> instantBuilder = InstantBuilder.newBuilder(CustomModel.class);
+    ArrayList<CustomModel> listData = new ArrayList<>();
 
-    private CustomRecyclerView() {
-
-        ArrayList<CustomModel> listData = new ArrayList<>();
+    private void  loadData(){
 
         listData.add(new CustomModel("Apple Pie", "SDK API level : 1, v : 1.0"));
         listData.add(new CustomModel("Banana Bread", "SDK API level : 2, v : 1.1 "));
@@ -44,8 +43,13 @@ public class CustomRecyclerView extends Fragment {
         listData.add(new CustomModel("Pie", "SDK API level : 28, v : 9.0 "));
         listData.add(new CustomModel("Q - Android 10", "SDK API level : 29, v : 10.0 "));
 
+    }
+
+    private CustomRecyclerView() {
+
+        loadData();
         instantBuilder.itemVewResource(R.layout.custom_view);
-        instantBuilder.setViewDataItems(listData);
+
         instantBuilder.setInstantViewBinder(CustomItemViewBind.getBinder());
         instantBuilder.setInstantViewClickBinder(CustomItemViewClick.getClicker());
 
@@ -71,9 +75,11 @@ public class CustomRecyclerView extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        InstantRecyclerView recyclerView = instantBuilder
+        InstantRecyclerView<CustomModel> recyclerView = instantBuilder
                 .fromRecyclerView(getActivity(), R.id.recyclerViewId)
                 .build();
+
+        recyclerView.setViewDataItems(listData);
 
 
     }

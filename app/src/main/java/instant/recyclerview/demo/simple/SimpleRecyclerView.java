@@ -17,35 +17,34 @@ public class SimpleRecyclerView extends Fragment {
 
 
     private static SimpleRecyclerView recyclerFrag = null;
-    private InstantBuilder<String> instantBuilder  = InstantBuilder.newBuilder(String.class);
+    private InstantBuilder<String> instantBuilder = InstantBuilder.newBuilder(String.class);
+    private String[] listData = new String[]{
+            "Apple Pie",
+            "Banana Bread",
+            "Cupcake",
+            "Donut",
+            "Eclair",
+            "Froyo",
+            "Gingerbread",
+            "Honeycomb",
+            "Ice Cream Sandwich",
+            "Jelly Bean",
+            "Kitkat",
+            "Lollipop",
+            "Marshmallow",
+            "Nougat",
+            "Oreo",
+            "Pie",
+            "Q - Android 10",
+
+    };
 
     private SimpleRecyclerView() {
-        String[] listData = new String[]{
-                "Apple Pie",
-                "Banana Bread",
-                "Cupcake",
-                "Donut",
-                "Eclair",
-                "Froyo",
-                "Gingerbread",
-                "Honeycomb",
-                "Ice Cream Sandwich",
-                "Jelly Bean",
-                "Kitkat",
-                "Lollipop",
-                "Marshmallow",
-                "Nougat",
-                "Oreo",
-                "Pie",
-                "Q - Android 10",
 
-        };
 
         instantBuilder.itemVewResource(R.layout.simple_view);
-        instantBuilder.setViewDataItems(listData);
         instantBuilder.setInstantViewBinder(SimpleItemViewBind.getBinder());
         instantBuilder.setInstantViewClickBinder(SimpleItemViewClick.getClicker());
-
 
 
     }
@@ -69,9 +68,11 @@ public class SimpleRecyclerView extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        InstantRecyclerView recyclerView = instantBuilder
+        InstantRecyclerView<String> recyclerView = instantBuilder
                 .fromRecyclerView(getActivity(), R.id.recyclerViewId)
                 .build();
+
+        recyclerView.setViewDataItems(listData);
 
 
     }

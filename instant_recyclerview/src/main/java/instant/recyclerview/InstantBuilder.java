@@ -53,6 +53,11 @@ public class InstantBuilder<T> {
         return this;
     }
 
+
+    protected void setAdapterViewDataItems(List<T> items) {
+        this.items = items;
+    }
+
     public InstantBuilder<T> setViewDataItems(T[] items) {
         this.items = Arrays.asList(items);
         return this;
@@ -100,7 +105,7 @@ public class InstantBuilder<T> {
     }
 
 
-    public InstantRecyclerView build() {
+    public InstantRecyclerView<T> build() {
         recyclerAdapter = new InstantRecyclerAdapter<>(this);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setInstantBuilder(this);

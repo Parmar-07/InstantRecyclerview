@@ -48,6 +48,17 @@ public class InstantRecyclerView<T> extends RecyclerView implements InstantOpera
 
 
     @Override
+    public void setViewDataItems(List<T> items) {
+        builder.getRecyclerAdapter().setViewDataItems(items);
+    }
+
+    @Override
+    public void setViewDataItems(T[] items) {
+        builder.getRecyclerAdapter().setViewDataItems(items);
+
+    }
+
+    @Override
     public void setViewNewDataItems(List<T> items) {
         builder.getRecyclerAdapter().setViewNewDataItems(items);
 

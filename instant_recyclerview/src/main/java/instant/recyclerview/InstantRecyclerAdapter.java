@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class InstantRecyclerAdapter<T> extends RecyclerView.Adapter<InstantViewHolder> implements InstantOperations<T> {
@@ -16,6 +17,16 @@ public class InstantRecyclerAdapter<T> extends RecyclerView.Adapter<InstantViewH
 
     InstantRecyclerAdapter(InstantBuilder<T> builder) {
         this.builder = builder;
+    }
+
+    @Override
+    public void setViewDataItems(List<T> items) {
+        builder.setAdapterViewDataItems(items);
+    }
+
+    @Override
+    public void setViewDataItems(T[] items) {
+        builder.setAdapterViewDataItems(Arrays.asList(items));
     }
 
     @Override
