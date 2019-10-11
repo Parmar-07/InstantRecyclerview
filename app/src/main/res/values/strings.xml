@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Instant RecyclerView</string>
+    <string name="custom">CUSTOM</string>
+    <string name="simple">SIMPLE</string>
+</resources>
